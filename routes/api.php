@@ -9,4 +9,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/screen', [ScreenController::class, 'loadScreen']);
+Route::post('/records', [ScreenController::class, 'getRecords']);
 
