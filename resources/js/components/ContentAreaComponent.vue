@@ -7,7 +7,7 @@
             <screen-two-component/>
         </div>
         <div v-if="screen === 3">
-            <p class="text-center">{{ content }}</p>
+            <screen-three-component/>
         </div>
     </div>
 </template>
@@ -17,12 +17,14 @@ import {useContentStore} from '@/store/contentStore';
 import {mapState} from 'pinia';
 import ScreenOneComponent from "@/components/ScreenOneComponent.vue";
 import ScreenTwoComponent from "@/components/ScreenTwoComponent.vue";
+import ScreenThreeComponent from "@/components/ScreenThreeComponent.vue";
 
 export default {
     name: 'ContentAreaComponent',
     components: {
         ScreenOneComponent,
         ScreenTwoComponent,
+        ScreenThreeComponent,
     },
 
     computed: {
