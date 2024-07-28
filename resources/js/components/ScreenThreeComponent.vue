@@ -1,20 +1,17 @@
 <template>
-    <div class="p-4">
-        <div class="relative w-full" style="padding-top: 100%;">
-            <div class="absolute inset-0 grid gap-2">
+    <div class="flex items-center justify-center w-full h-full">
+        <div class="w-[45vw] h-[45vw] inset-0 grid grid-cols-3 grid-rows-3 gap-2">
+            <template
+                v-for="(row, rowIndex) in grid"
+                :key="rowIndex"
+            >
                 <div
-                    v-for="(row, rowIndex) in grid"
-                    :key="rowIndex"
-                    class="grid grid-cols-3 gap-2 w-full h-full"
-                >
-                    <div
-                        v-for="(color, colIndex) in row"
-                        :key="colIndex"
-                        :class="['w-full h-full', color === 'red' ? 'bg-red-500' : 'bg-blue-500']"
-                        @click="handleClick(rowIndex, colIndex)"
-                    ></div>
-                </div>
-            </div>
+                    v-for="(color, colIndex) in row"
+                    :key="colIndex"
+                    :class="['w-full h-full', color === 'red' ? 'bg-red-500' : 'bg-blue-500']"
+                    @click="handleClick(rowIndex, colIndex)"
+                ></div>
+            </template>
         </div>
     </div>
 </template>
@@ -55,25 +52,3 @@ export default {
     }
 };
 </script>
-
-<style scoped>
-.grid {
-    display: grid;
-}
-
-.w-full {
-    width: 100%;
-}
-
-.h-full {
-    height: 100%;
-}
-
-.bg-red-500 {
-    background-color: red;
-}
-
-.bg-blue-500 {
-    background-color: blue;
-}
-</style>
