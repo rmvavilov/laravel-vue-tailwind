@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import SideBarComponent from "./components/SideBarComponent.vue";
-import ContentAreaComponent from "./components/ContentAreaComponent.vue";
+import SideBarComponent from "@/components/SideBarComponent.vue";
+import ContentAreaComponent from "@/components/ContentAreaComponent.vue";
 
 export default {
     name: 'App',
