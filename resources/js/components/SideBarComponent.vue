@@ -1,27 +1,15 @@
 <template>
     <div class="w-1/4 bg-blue-100 p-4">
         <ul>
-            <li class="my-2">
-                <a
-                    class="text-blue-500 cursor-pointer"
-                    :class="{ 'font-bold': screen === 1 }"
-                    @click.prevent="changeScreen(1)"
-                >Screen 1</a>
-            </li>
-            <li class="my-2">
-                <a
-                    class="text-blue-500 cursor-pointer"
-                    :class="{ 'font-bold': screen === 2 }"
-                    @click.prevent="changeScreen(2)"
-                >Screen 2</a>
-            </li>
-            <li class="my-2">
-                <a
-                    class="text-blue-500 cursor-pointer"
-                    :class="{ 'font-bold': screen === 3 }"
-                    @click.prevent="changeScreen(3)"
-                >Screen 3</a>
-            </li>
+            <template v-for="link in links">
+                <li class="my-2">
+                    <a
+                        class="text-blue-500 cursor-pointer"
+                        :class="{ 'font-bold': screen === link.screen }"
+                        @click.prevent="changeScreen(link.screen)"
+                    >{{ link.name }}</a>
+                </li>
+            </template>
         </ul>
     </div>
 </template>
@@ -33,6 +21,16 @@ import {useContentStore} from '@/store';
 
 export default {
     name: 'SideBarComponent',
+
+    data() {
+        return {
+            links: [
+                {name: 'Screen 1', screen: 1},
+                {name: 'Screen 2', screen: 2},
+                {name: 'Screen 3', screen: 3},
+            ]
+        }
+    },
 
     computed: {
         ...mapState(useContentStore, ['screen'])
