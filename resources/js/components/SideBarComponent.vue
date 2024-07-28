@@ -28,7 +28,7 @@
 
 <script>
 import {mapState, mapActions} from 'pinia';
-import {useContentStore} from '@/store/contentStore';
+import {useContentStore} from '@/store';
 
 
 export default {
@@ -38,12 +38,17 @@ export default {
         ...mapState(useContentStore, ['screen'])
     },
 
+    watch: {
+        screen() {
+            this.fetchScreen();
+        }
+    },
+
     methods: {
-        ...mapActions(useContentStore, ['loadScreen', 'setScreen']),
+        ...mapActions(useContentStore, ['fetchScreen', 'setScreen']),
 
         changeScreen(screenNumber) {
             this.setScreen(screenNumber);
-            this.loadScreen(screenNumber);
         }
     }
 }
